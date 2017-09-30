@@ -4,12 +4,12 @@
                     <header class="entry-header">
                         <h1 class="entry-title">{{ post.title }}</h1>
                         <div class="entry-meta">
-                            <span class="post-category"><a href="#">{{ post.category.name }}</a></span>
-                            <span class="post-date"><a href="#"><time class="entry-date"
+                            <span class="post-category"><a href="{% url 'blog:categories' post.category.pk %}">{{ post.category.name }}</a></span>
+                            <span class="post-date"><a href="{% url 'blog:archives' post.created_time.year post.created_time.month %}"><time class="entry-date"
                                                                       datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
                             <span class="post-author"><a href="#">{{ post.author }}</a></span>
                             <span class="comments-link"><a href="#">{{ post.comment_set.count }} 评论</a></span>
-                            <span class="views-count"><a href="#">588 阅读</a></span>
+                            <span class="views-count"><a href="#">{{ post.count_read }} 阅读</a></span>
                         </div>
                     </header>
                     <div class="entry-content clearfix">

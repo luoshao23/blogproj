@@ -14,11 +14,11 @@
                                                           datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
                 <span class="post-author"><a href="#">{{ post.author }}</a></span>
                 <span class="comments-link"><a href="#">{{ post.comment_set.count }} 评论</a></span>
-                <span class="views-count"><a href="#">588 阅读</a></span>
+                <span class="views-count"><a href="#">{{ post.count_read }} 阅读</a></span>
             </div>
             </header>
             <div class="entry-content clearfix">
-                <p>{{ post.excerpt }}</p>
+                <p>{{ post.excerpect }}...</p>
                 <div class="read-more cl-effect-14">
                     <a href="{{ post.get_absolute_url }}" class="more-link">More <span class="meta-nav">→</span></a>
                 </div>
@@ -37,15 +37,19 @@
     -->
     <div class="pagination">
         <ul>
-            <li><a href="">1</a></li>
-            <li><a href="">...</a></li>
+        {% for page_num in paginator.page_range %}
+        {% if page_num == current_page %}<li class="current">{% else %}<li>{% endif %}<a href="{% url 'blog:index' page_num %}">{{ page_num }}</a></li>
+        {% empty %}
+            <!--  -->
+        {% endfor %}
+         <!--    <li><a href="">...</a></li>
             <li><a href="">4</a></li>
             <li><a href="">5</a></li>
             <li class="current"><a href="">6</a></li>
             <li><a href="">7</a></li>
             <li><a href="">8</a></li>
             <li><a href="">...</a></li>
-            <li><a href="">11</a></li>
+            <li><a href="">11</a></li> -->
         </ul>
     </div>
 {% endblock main %}
