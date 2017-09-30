@@ -70,10 +70,10 @@ class IndexView(ListView):
         cpage = page.number
 
         total_pages = paginator.num_pages
-        page_range = list(paginator.page_range)
+        page_range = [li for li in paginator.page_range]
 
         if cpage == 1:
-            right = page_range[cpage:(cpage + 2)]
+            right = page_range[cpage: cpage + 2]
 
             if right[-1] < total_pages - 1:
                 right_has_more = True
