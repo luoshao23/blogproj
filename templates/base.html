@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Black &amp; White</title>
+    <title>Shellder</title>
 
     <!-- meta -->
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h1><a href="{% url 'blog:index' %}"><b>Black</b> &amp; White</a></h1>
+                    <h1><a href="{% url 'blog:index' %}">Shellder</a></h1>
                 </div>
             </div><!-- col-md-4 -->
             <div class="col-md-8 col-sm-7 col-xs-4">
@@ -110,7 +110,7 @@
                     <ul>
                         {% for category in category_list %}
                             <li>
-                                <a href="#">{{ category.name }} <span class="post-count">(13)</span></a>
+                                <a href="{% url 'blog:categories' category.pk %}">{{ category.name }} <span class="post-count">({{ category.post_set.count }})</span></a>
                             </li>
                         {% empty %}
                             暂无分类！

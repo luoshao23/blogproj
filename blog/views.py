@@ -34,3 +34,7 @@ def archives(request, year, month):
                                     created_time__month=month
                                     )
     return render(request, 'blog/index.html', context={'post_list': post_list})
+
+def categories(request, pk):
+    post_list = Post.objects.filter(category=pk)
+    return render(request, 'blog/index.html', context={'post_list': post_list})
