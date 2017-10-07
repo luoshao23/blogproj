@@ -14,7 +14,7 @@ from .models import Post, Category, Tag
 from comments.forms import CommentForm
 
 global PAGE_NUM
-PAGE_NUM = 1
+PAGE_NUM = 10
 
 
 def make_page(objects,  cpage, page_num=PAGE_NUM):
@@ -47,7 +47,7 @@ class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
-    paginate_by = 1
+    paginate_by = PAGE_NUM
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
@@ -245,3 +245,22 @@ def search(request):
 
     return render(request, 'blog/index.html', {'error_msg': error_msg,
                                                 'post_list': post_list})
+
+
+class BlogView(ListView):
+    model = Post
+    template_name = 'blog/blog.html'
+    context_object_name = 'post_list'
+    paginate_by = PAGE_NUM
+
+class AboutView(ListView):
+    model = Post
+    template_name = 'blog/about.html'
+    context_object_name = 'post_list'
+    # paginate_by = PAGE_NUM
+
+class ContactView(ListView):
+    model = Post
+    template_name = 'blog/contact.html'
+    context_object_name = 'post_list'
+    # paginate_by = PAGE_NUM
