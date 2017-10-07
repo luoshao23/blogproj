@@ -3,6 +3,7 @@
 *.so
 *.egg
 *.egg-info
-*/__pycache__/*
-*/migrations/*
+whoosh_index/
+__pycache__/
+migrations/
 *.sqlite3
